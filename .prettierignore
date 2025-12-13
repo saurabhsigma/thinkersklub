@@ -1,0 +1,17 @@
+node_modules
+.next
+dist
+build
+public
+*.log
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+coverage
+.git
+package-lock.json
+yarn.lock
