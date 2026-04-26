@@ -20,7 +20,7 @@ export default function AboutPage() {
       name: 'Devesh Singh',
       role: 'IIT BHU',
       image: '/devesh.jpeg',
-      bio: 'Leading with technical expertise.',
+      bio: 'Leading with technical expertise',
     },
     {
       name: 'Bhartendu Kumar',
