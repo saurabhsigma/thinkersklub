@@ -20,7 +20,7 @@ export default function CourseCard({
       <div className="h-full flex flex-col overflow-hidden border-2 border-slate-900 bg-white p-0 transition-transform duration-300 group-hover:-translate-y-2 group-hover:rotate-1 shadow-[4px_4px_0_0_#1e293b] rounded-[255px_15px_225px_15px/15px_225px_15px_255px] dark:bg-slate-900/50 dark:backdrop-blur-sm dark:border-white/20 dark:shadow-[4px_4px_0_0_rgba(255,255,255,0.2)]">
         {/* Course Thumbnail Area */}
         <div
-          className={`h-48 w-full bg-gradient-to-br ${color} p-6 flex flex-col justify-between relative overflow-hidden`}
+          className={`h-48 w-full bg-linear-to-br ${color} p-6 flex flex-col justify-between relative overflow-hidden`}
         >
           <div className="absolute top-0 right-0 p-4 opacity-20 transform group-hover:scale-110 transition-transform duration-500">
             <Star size={80} fill="currentColor" stroke="none" className="text-white" />
@@ -34,16 +34,16 @@ export default function CourseCard({
         </div>
 
         {/* Content */}
-        <div className="p-6 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors">
+        <div className="p-6 flex flex-col grow">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-emerald-600 transition-colors">
             {title}
           </h3>
 
           {description && (
-            <p className="text-slate-600 mb-6 flex-grow leading-relaxed">{description}</p>
+            <p className="text-slate-600 dark:text-slate-200 mb-6 grow leading-relaxed">{description}</p>
           )}
 
-          <div className="flex gap-3 mt-auto pt-4 border-t border-slate-100">
+          <div className="flex gap-3 mt-auto pt-4 border-t border-slate-100 dark:border-white/15">
             <Link
               href="/courses"
               className="flex-1 btn bg-slate-900 text-white hover:bg-emerald-600 border-none justify-center gap-2 group/btn"
@@ -56,7 +56,7 @@ export default function CourseCard({
             </Link>
             <Link
               href="/courses"
-              className="flex-1 btn bg-slate-100 text-slate-700 hover:bg-slate-200 border-none justify-center"
+              className="flex-1 btn bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700 border-none justify-center"
             >
               Preview
             </Link>

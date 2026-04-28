@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 /* -------------------------------------------------------------------------- */
 /*                                 Theme Config                               */
 /* -------------------------------------------------------------------------- */
@@ -48,173 +50,220 @@
   --border: #e2e8f0;
 
   /* SHADOWS & RADIUS */
-  /* Footer styles (light/dark aware) */
-  .site-footer {
-    background: #ffffff;
-    color: var(--text-primary);
-    border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
-    padding: 2.5rem 0 1.5rem;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 1.25rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  .footer-brand .logo {
-    font-weight: 800;
-    color: var(--accent-primary);
-    font-size: 1.125rem;
-  }
-
-  .footer-brand .brand-desc {
-    color: var(--text-secondary);
-    margin-top: 6px;
-    max-width: 36ch;
-  }
-
-  .footer-col h4 {
-    margin: 0 0 0.5rem 0;
-    color: var(--text-primary);
-  }
-
-  .footer-col ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    color: var(--text-secondary);
-  }
-
-  .footer-col a {
-    color: var(--text-secondary);
-    text-decoration: none;
-  }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 1.25rem auto 0;
-    padding: 0 1rem;
-    color: var(--text-secondary);
-  }
-
-  /* Contact card (adapt to theme) */
-  .contact-card {
-    background: #ffffff;
-    color: var(--text-primary);
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.04);
-    border: 1px solid var(--border);
-  }
-
-  .contact-info p,
-  .contact-card h3 {
-    color: var(--text-primary);
-  }
-
-  /* contact links */
-  .contact-card a {
-    color: var(--primary);
-    text-decoration: underline;
-  }
-
-  @media (max-width: 880px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
-      gap: 0.75rem;
-      text-align: center;
-    }
-  }
-
-  /* dark theme overrides */
-  [data-theme='dark'] .site-footer {
-    background: transparent;
-    color: var(--text-primary);
-    border-top-color: rgba(255, 255, 255, 0.04);
-  }
-
-  [data-theme='dark'] .footer-brand .brand-desc,
-  [data-theme='dark'] .footer-col ul,
-  [data-theme='dark'] .footer-bottom {
-    color: var(--text-secondary);
-  }
-
-  [data-theme='dark'] .contact-card {
-    background: rgba(255, 255, 255, 0.03);
-    box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-  }
-
-  /* Contact form */
-  .form-group label {
-    font-weight: 600;
-    margin-bottom: 6px;
-    display: block;
-    color: var(--text-primary);
-  }
-
-  .form-group input[type='text'],
-  .form-group input[type='email'],
-  .form-group textarea {
-    width: 100%;
-    padding: 0.65rem 0.85rem;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-primary);
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
-    border-color: var(--accent-primary);
-  }
-
-  .form-submit {
-    background: var(--accent-primary);
-    color: white;
-    padding: 0.7rem 1.1rem;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-  }
-
-  .muted {
-    color: var(--text-secondary);
-  }
-
-  @media (max-width: 880px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .form-row {
-      flex-direction: column;
-    }
-  }
-
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   --radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
   /* Organic default */
+}
+
+/* Footer styles (light/dark aware) */
+.site-footer {
+  position: relative;
+  margin-top: 3rem;
+  padding: 2.5rem 0 1.5rem;
+  color: var(--text-primary);
+  border-top: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.96)),
+    var(--bg-primary);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+.footer-brand,
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand .logo {
+  font-weight: 800;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.footer-brand .brand-desc {
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  max-width: 36ch;
+}
+
+.footer-col h4 {
+  margin: 0 0 0.75rem 0;
+  color: var(--text-primary);
+}
+
+.footer-col ul,
+.footer-col address {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-style: normal;
+}
+
+.footer-col li,
+.footer-col address,
+.footer-bottom small {
+  color: var(--text-primary);
+}
+
+.footer-col a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  padding: 0 0.25rem;
+  color: var(--text-muted);
+  gap: 1rem;
+}
+
+/* Contact card (adapt to theme) */
+.contact-card {
+  background: #ffffff;
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.04);
+  border: 1px solid var(--border);
+}
+
+.contact-info p,
+.contact-card h3 {
+  color: var(--text-primary);
+}
+
+/* contact links */
+.contact-card a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+@media (max-width: 880px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
+
+/* dark theme overrides */
+[data-theme='dark'] .site-footer {
+  color: var(--text-primary);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.72), rgba(15, 23, 42, 0.92)),
+    #0f172a;
+}
+
+[data-theme='dark'] .footer-grid {
+  background: rgba(15, 23, 42, 0.78);
+  border-color: rgba(148, 163, 184, 0.22);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.45);
+}
+
+[data-theme='dark'] .footer-brand .brand-desc,
+[data-theme='dark'] .footer-col ul,
+[data-theme='dark'] .footer-col address,
+[data-theme='dark'] .footer-bottom {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .footer-col li,
+[data-theme='dark'] .footer-bottom small {
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .footer-col a {
+  color: #86efac;
+}
+
+[data-theme='dark'] .contact-card {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Contact form */
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: var(--text-primary);
+}
+
+.form-group input[type='text'],
+.form-group input[type='email'],
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+  border-color: var(--accent-primary);
+}
+
+.form-submit {
+  background: var(--accent-primary);
+  color: white;
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 880px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -339,8 +388,8 @@
   /* Slate-800 */
 
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
 
   --primary: #818cf8;
   --primary-hover: #6366f1;
@@ -386,6 +435,14 @@ body {
   line-height: 1.6;
   font-size: 110%;
   /* Scaled up by 10% as requested */
+}
+
+html {
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -647,6 +704,43 @@ p {
 
   border-color: rgba(255, 255, 255, 0.15);
   box-shadow: 4px 4px 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+/* Global fallback: enforce readable dark cards even if local dark:* classes are missing */
+[data-theme='dark'] :where(
+  .card,
+  .card-doodle,
+  article[class*='bg-white'][class*='border'],
+  div[class*='bg-white'][class*='border']
+) {
+  background-color: rgba(15, 23, 42, 0.72) !important;
+  border-color: rgba(148, 163, 184, 0.35) !important;
+}
+
+[data-theme='dark'] :where(
+  .card,
+  .card-doodle,
+  article[class*='bg-white'][class*='border'],
+  div[class*='bg-white'][class*='border']
+) :is(
+  .text-slate-950,
+  .text-slate-900,
+  .text-slate-800,
+  .text-slate-700,
+  .text-slate-600,
+  .text-slate-500,
+  .text-slate-400
+) {
+  color: #e2e8f0 !important;
+}
+
+[data-theme='dark'] :where(
+  .card,
+  .card-doodle,
+  article[class*='bg-white'][class*='border'],
+  div[class*='bg-white'][class*='border']
+) :is(.text-emerald-700, .text-emerald-600, .text-indigo-700, .text-indigo-600) {
+  color: #86efac !important;
 }
 /* Fix card background for light theme so inputs stay visible */
 [data-theme='light'] .card {

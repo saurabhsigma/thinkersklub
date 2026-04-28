@@ -4,8 +4,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'ThinkerClub - Fun Learning for Kids',
-  description: 'Empowering students to think, create, and innovate.',
+  title: 'ThinkersKlub | School Software Suite',
+  description:
+    'ThinkersKlub provides professional software for schools, including TestWest, LMS, Parent Teacher App, and ERP.',
 };
 
 export default function RootLayout({
@@ -23,9 +24,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased text-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
+      <body className="antialiased transition-colors duration-300">
         <Header />
-        <main className="pt-24 min-h-screen">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

@@ -14,8 +14,8 @@ export default function Testimonial({ name, role, quote }: TestimonialProps) {
         <Quote size={20} fill="currentColor" stroke="none" />
       </div>
 
-      <p className="text-lg italic text-slate-700 dark:text-slate-300 mb-6 relative z-10 leading-relaxed">
-        "{quote}"
+      <p className="text-lg italic text-slate-800 dark:text-slate-200 mb-6 relative z-10 leading-relaxed">
+        &ldquo;{quote}&rdquo;
       </p>
 
       <div className="flex items-center gap-4">
